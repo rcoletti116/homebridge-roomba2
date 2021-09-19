@@ -266,12 +266,19 @@ roombaAccessory.prototype = {
         });
     },
 
-    
+identify(callback) {
+        let roomba = this.getRoomba();
+        this.log("Identify requested.");
+ this.onConnected(roomba, async () => {
+            try {
+                        await roomba.find();
+                        callback();
+                }
 
-    identify(callback) {
-        this.log.debug("Identify requested. Not supported yet.");
-
-        callback();
+            catch (error) {
+                    this.log("Unable to Locate");
+                        callback(error);
+                }})
     },
 
     getStatus(callback, silent) {
@@ -385,7 +392,7 @@ roombaAccessory.prototype = {
 
         this.accessoryInfo.setCharacteristic(Characteristic.Manufacturer, "iRayanKhan");
         this.accessoryInfo.setCharacteristic(Characteristic.SerialNumber, this.serialnum);
-        this.accessoryInfo.setCharacteristic(Characteristic.Identify, false);
+        this.accessoryInfo.setCharacteristic(Characteristic.Identify, true);
         this.accessoryInfo.setCharacteristic(Characteristic.Name, this.name);
         this.accessoryInfo.setCharacteristic(Characteristic.Model, this.model);
         this.accessoryInfo.setCharacteristic(Characteristic.FirmwareRevision, "1.1.0");
