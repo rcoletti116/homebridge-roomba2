@@ -1,3 +1,5 @@
+// creating classic branch for reference. Based on v1.2.1
+
 let Service;
 let Characteristic;
 
