@@ -168,7 +168,7 @@ export default class RoombaAccessory implements AccessoryPlugin {
 
         this.accessoryInfo.setCharacteristic(Characteristic.Manufacturer, "iRobot");
         this.accessoryInfo.setCharacteristic(Characteristic.SerialNumber, this.serialnum);
-        this.accessoryInfo.setCharacteristic(Characteristic.Identify, false);
+        this.accessoryInfo.setCharacteristic(Characteristic.Identify, true);
         this.accessoryInfo.setCharacteristic(Characteristic.Name, this.name);
         this.accessoryInfo.setCharacteristic(Characteristic.Model, this.model);
         this.accessoryInfo.setCharacteristic(Characteristic.FirmwareRevision, version);
@@ -517,6 +517,23 @@ export default class RoombaAccessory implements AccessoryPlugin {
         }
     }
     
+    private identify(callback) {
+        this.log("Identify requested.");
+
+        this.connect(async(error, roomba) => {
+            if (error || !roomba) {
+                callback(error || new Error("Unknown error"));
+                return;
+            }
+        
+           try {
+                await roomba.find();
+                callback();
+           } catch (error) {
+               this.log("Unable to Locate");
+           }
+           });
+        }
     /**
      * Creates as a Characteristic getter function that derives the CharacteristicValue from Roomba's status.
      */
