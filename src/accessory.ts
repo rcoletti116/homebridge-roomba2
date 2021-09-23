@@ -155,10 +155,6 @@ export default class RoombaAccessory implements AccessoryPlugin {
         }
     }
 
-    public identify(): void {
-        this.log.debug("Identify requested. Not supported yet.");
-    }
-
     public getServices(): Service[] {
         const services: Service[] = [];
 
