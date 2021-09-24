@@ -76,7 +76,8 @@ export default class RoombaAccessory implements AccessoryPlugin {
     private robotpwd: string
     private ipaddress: string
     private firmware: string
-    private noDockOnStop: boolean
+    private dockOnStop: boolean
+
 
     private accessoryInfo: Service
     private filterMaintenance: Service
@@ -128,7 +129,7 @@ export default class RoombaAccessory implements AccessoryPlugin {
         this.robotpwd = config.robotpwd;
         this.ipaddress = config.ipaddress;
         this.firmware = "N/A";
-        this.noDockOnStop = config.noDockOnStop;
+        this.dockOnStop = config.dockOnStop !== undefined ? config.dockOnStop : true;
 
         const showDockAsContactSensor = config.dockContactSensor === undefined ? true : config.dockContactSensor;
         const showRunningAsContactSensor = config.runningContactSensor;
@@ -442,7 +443,7 @@ export default class RoombaAccessory implements AccessoryPlugin {
                             docking: false,
                         });
 
-                        if (!this.noDockOnStop) {
+                        if (this.dockOnStop) {
                             this.log("Roomba paused, returning to Dock");
                             await this.dockWhenStopped(roomba, 3000);
                         } else {
