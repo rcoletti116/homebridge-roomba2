@@ -67,25 +67,25 @@ configure your accessory using JSON:
   "ipaddress": "192.168.x.xxx",
   "dockContactSensor": true,
   "runningContactSensor": true,
-  "binContactSensor": true
+  "binContactSensor": true,
+  "dockOnStop": true
 }
 ```
 
-
-|Key|Description|Default|
-|---|-----------|---|
+|Key|Description|Default Value|
+|---|-----------|-------------|
 |`accessory`|Loads this plugin. Must be set to `Roomba2`||
-|`name`|The name of your Roomb as it should appear in Homebridge and HomeKit||
+|`name`|The name of your Roomba as it should appear in Homebridge and HomeKit||
 |`model`|The model of your Roomba as you'd like it to appear in HomeKit||
 |`serialnum`|The serial number as you'd like it to appear in HomeKit||
 |`blid`|The `blid` of your Roomba, obtained during setup||
 |`robotpwd`|The password for your Roomba, obtained during setup||
-|`ipaddress`|The IP address of your Roomba on your network||
-|`dockContactSensor`|Add a contact sensor to HomeKit that's _closed_ when Roomba is docked||
-|`runningContactSensor`|Add a contact sensor to HomeKit that's _open_ when Roomba is running||
-|`binContactSensor`|Add a contact sensor to HomeKit that's _open_ when Roomba's bin is full||
-|`dockingContactSensor`|Add a contact sensor to HomeKit that's _open_ when Roomba is docking||
-|`dockOnStop`|Sends roomba home to dock when stopped|true|
+|`ipaddress`|The [IP address](#troubleshooting) of your Roomba on your network||
+|`dockContactSensor`|Add a contact sensor to HomeKit that's _closed_ when Roomba is docked|`true`|
+|`runningContactSensor`|Add a contact sensor to HomeKit that's _open_ when Roomba is running|`false`|
+|`binContactSensor`|Add a contact sensor to HomeKit that's _open_ when Roomba's bin is full|`false`|
+|`dockingContactSensor`|Add a contact sensor to HomeKit that's _open_ when Roomba is docking|`false`|
+|`dockOnStop`|Send home to dock when stopped|`true`|
 
 ### Deprecated configuration
 
@@ -99,7 +99,7 @@ as to provide HomeKit with Roomba's status only when it requests it.
 Click on any of the items below to expand the corresponding answer.
 
 <details>
-  ##<summary>Finding my Roomba's IP address</summary>  
+  <summary>Finding my Roomba's IP address</summary>  
 
   >You can find your Roomba's IP Address in the iRobot app. Open the app and choose your Robot. Scroll down to the bottom and find Robot Settings. Click Wi-Fi Settings and then Robot Wi-FI Details. You will find your IP address and various other network goodies here.
   
@@ -185,3 +185,4 @@ Changesets will create a new file in the `.changeset` directory that you can com
 STVMallen  - [Original plugin](https://github.com/stvmallen/homebridge-roomba-stv) 
 
 ncovercash - [Dock status](https://github.com/stvmallen/homebridge-roomba-stv/pull/63)
+
