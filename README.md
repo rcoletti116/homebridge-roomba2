@@ -185,4 +185,3 @@ Changesets will create a new file in the `.changeset` directory that you can com
 STVMallen  - [Original plugin](https://github.com/stvmallen/homebridge-roomba-stv) 
 
 ncovercash - [Dock status](https://github.com/stvmallen/homebridge-roomba-stv/pull/63)
-
