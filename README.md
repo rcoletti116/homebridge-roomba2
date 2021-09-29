@@ -20,6 +20,7 @@
 - Roomba docked notifcation 
 - Roomba running notification
 - Roomba bin full notification
+- Locate Roomba (requires 3rd party HomeKit app such as Eve)
 
 The homebridge-roomba2 plugin polls Roomba for its status when requested by HomeKit, so when you first open
 the Home app you may see an old status, or no status, until Roomba has had time to respond (which may take
